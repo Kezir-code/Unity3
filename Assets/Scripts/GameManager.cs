@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
     [SerializeField] private TextMeshProUGUI questionText;
     [SerializeField] private QuestionSO question;
@@ -18,5 +18,10 @@ public class GameManager : MonoBehaviour
         {
             answerButtons[i].SetAnswer(question.GetAnswer(i), i == correctIndex);
         }
+    }
+
+    public void ShowCorrectAnswer()
+    {
+        answerButtons[question.GetCorrectAnswerIndex()].ShowCorrectAnswer();
     }
 }

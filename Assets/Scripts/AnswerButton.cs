@@ -29,11 +29,22 @@ public class AnswerButton : MonoBehaviour
     {
         if (correctAnswer)
         {
-            outline.color = Color.green;
+            ShowCorrectAnswer();
         }
         else
         {
-            outline.color = Color.red;
+            ShowUnCorrectAnswer();
         }
+    }
+
+    public void ShowCorrectAnswer()
+    {
+        outline.color = Color.green;
+    }
+
+    private void ShowUnCorrectAnswer()
+    {
+        outline.color = Color.red;
+        GameManager.Instance.ShowCorrectAnswer();
     }
 }
