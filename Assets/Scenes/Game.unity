@@ -258,6 +258,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 141205433}
   m_CullTransparentMesh: 1
+--- !u!1 &157158531
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 157158533}
+  - component: {fileID: 157158532}
+  m_Layer: 0
+  m_Name: Timer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &157158532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 157158531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25108c5aefc220f4790c96d15c95f4c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerToCompleteQuestion: 15
+  timerToShowCorrectAnswer: 3
+  timerImage: {fileID: 1306913374}
+  fillFraction: 0
+--- !u!4 &157158533
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 157158531}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1646.9202, y: 957.1106, z: 1.2755027}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &216892313
 GameObject:
   m_ObjectHideFlags: 0
@@ -1534,7 +1582,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1394044611}
   - component: {fileID: 1394044610}
-  - component: {fileID: 1394044612}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1564,9 +1611,9 @@ MonoBehaviour:
   - {fileID: 1062593778}
   - {fileID: 488447817}
   - {fileID: 1107602105}
-  quizType: 0
+  quizType: 1
   nextQuestion: {fileID: 7376129575498054511}
-  questionAnswered: 0
+  timer: {fileID: 157158532}
 --- !u!4 &1394044611
 Transform:
   m_ObjectHideFlags: 0
@@ -1582,21 +1629,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1394044612
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1394044609}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25108c5aefc220f4790c96d15c95f4c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timerToCompleteQuestion: 15
-  timerToShowCorrectAnswer: 10
-  isAnsweringQuestion: 0
 --- !u!1 &1454558558
 GameObject:
   m_ObjectHideFlags: 0

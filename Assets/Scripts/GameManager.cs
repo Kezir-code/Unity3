@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -18,19 +19,27 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private QuizType quizType;
     [SerializeField] private Button nextQuestion;
     private bool questionAnswered;
+    [SerializeField] private Timer timer;
 
     void Start()
     {
         currentQuestion = 0;
         if (quizType == QuizType.Button)
         {
+            timer.Activate(false);
             nextQuestion.onClick.AddListener(GoToNextQuestion);
         }
         else if(quizType == QuizType.Timer)
         {
+            timer.Activate(true);
             nextQuestion.gameObject.SetActive(false);
         }
         SetUpNewQuestion();
+    }
+
+    private void Update()
+    {
+        
     }
 
     private void SetUpNewQuestion()
@@ -50,9 +59,13 @@ public class GameManager : Singleton<GameManager>
     {
         questionAnswered = true;
         SetUpButtonsState(false);
+        if (quizType == QuizType.Timer)
+        {
+            timer.CancelTimer();
+        }
     }
 
-    private void GoToNextQuestion()
+    public void GoToNextQuestion()
     {
         currentQuestion++;
         if (questionAnswered)
@@ -70,7 +83,7 @@ public class GameManager : Singleton<GameManager>
         answerButtons[question[currentQuestion].GetCorrectAnswerIndex()].ShowCorrectAnswer();
     }
 
-    private void SetUpButtonsState(bool value)
+    public void SetUpButtonsState(bool value)
     {
         foreach (var answer in answerButtons)
         {
