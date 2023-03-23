@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0277a28bfb98aa641971e1d06f5b9155, type: 3}
   m_Name: Question2
   m_EditorClassIdentifier: 
-  question: Enter question
+  question: 2 + 2 * 2 = ?
   answers:
-  - 1
-  - 2
-  - 3
   - 4
-  correctAnswerIndex: 1
+  - 8
+  - 6
+  - 12
+  correctAnswerIndex: 2

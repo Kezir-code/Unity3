@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0277a28bfb98aa641971e1d06f5b9155, type: 3}
   m_Name: Question1
   m_EditorClassIdentifier: 
-  question: Enter question
+  question: Stolica Polski
   answers:
-  - 1
-  - 2
-  - 3
-  - 4
-  correctAnswerIndex: 1
+  - Warszawa
+  - Krakow
+  - Berlin
+  - Paryz
+  correctAnswerIndex: 0
