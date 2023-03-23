@@ -12,10 +12,10 @@ public enum QuizType
 }
 public class GameManager : Singleton<GameManager>
 {
-    [SerializeField] private TextMeshProUGUI questionText;
+    [SerializeField] private TextMeshProUGUI questionText, questionNumberText, correctAnswersText;
     [SerializeField] private QuestionSO[] question;
     [SerializeField] private AnswerButton[] answerButtons = new AnswerButton[4];
-    private int currentQuestion;
+    private int currentQuestion, correctAnswers;
     [SerializeField] private QuizType quizType;
     [SerializeField] private Button nextQuestion;
     private bool questionAnswered;
@@ -34,12 +34,18 @@ public class GameManager : Singleton<GameManager>
             timer.Activate(true);
             nextQuestion.gameObject.SetActive(false);
         }
+        RefreshQuestionNumber();
         SetUpNewQuestion();
     }
 
-    private void Update()
+    private void RefreshQuestionNumber()
     {
-        
+        questionNumberText.text = (currentQuestion+1) + "/" + question.Length;
+    }
+    
+    private void RefreshCorrectAnswersPercentage()
+    {
+        correctAnswersText.text = Mathf.Round(((float)correctAnswers/(currentQuestion+1)) * 100).ToString() + "%";
     }
 
     private void SetUpNewQuestion()
@@ -74,8 +80,10 @@ public class GameManager : Singleton<GameManager>
         }
         else
         {
+            UpdateScore(false);
             SetUpNewQuestion();
         }
+        RefreshQuestionNumber();
     }
     
     public void ShowCorrectAnswer()
@@ -89,5 +97,15 @@ public class GameManager : Singleton<GameManager>
         {
             answer.SetUpButtonState(value);
         }
+    }
+
+    public void UpdateScore(bool correctAnswer)
+    {
+        if (correctAnswer == true)
+        {
+            correctAnswers++;
+        }
+        RefreshCorrectAnswersPercentage();
+
     }
 }

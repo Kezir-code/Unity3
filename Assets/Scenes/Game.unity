@@ -1602,6 +1602,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questionText: {fileID: 141205435}
+  questionNumberText: {fileID: 971657904}
+  correctAnswersText: {fileID: 905294817}
   question:
   - {fileID: 11400000, guid: d9949df72f9202746b54bdaab61f437d, type: 2}
   - {fileID: 11400000, guid: 78c585d3a7ee0064cb5300ecaa321e93, type: 2}

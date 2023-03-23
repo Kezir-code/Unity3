@@ -35,6 +35,7 @@ public class AnswerButton : MonoBehaviour
         {
             ShowUnCorrectAnswer();
         }
+        GameManager.Instance.UpdateScore(correctAnswer);
         GameManager.Instance.PrepareNewQuestion();
     }
 
