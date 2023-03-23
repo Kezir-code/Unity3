@@ -35,6 +35,7 @@ public class AnswerButton : MonoBehaviour
         {
             ShowUnCorrectAnswer();
         }
+        GameManager.Instance.PrepareNewQuestion();
     }
 
     public void ShowCorrectAnswer()
@@ -46,5 +47,10 @@ public class AnswerButton : MonoBehaviour
     {
         outline.color = Color.red;
         GameManager.Instance.ShowCorrectAnswer();
+    }
+
+    public void SetUpButtonState(bool value)
+    {
+        button.interactable = value;
     }
 }
