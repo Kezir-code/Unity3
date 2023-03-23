@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public enum QuizType
@@ -12,7 +13,7 @@ public enum QuizType
 }
 public class GameManager : Singleton<GameManager>
 {
-    [SerializeField] private TextMeshProUGUI questionText, questionNumberText, correctAnswersText;
+    [SerializeField] private TextMeshProUGUI questionText, questionNumberText, correctAnswersText, endScoreText;
     [SerializeField] private QuestionSO[] question;
     [SerializeField] private AnswerButton[] answerButtons = new AnswerButton[4];
     private int currentQuestion, correctAnswers;
@@ -20,6 +21,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private Button nextQuestion;
     private bool questionAnswered;
     [SerializeField] private Timer timer;
+    [SerializeField] private GameObject gameView, endView;
 
     void Start()
     {
@@ -74,18 +76,33 @@ public class GameManager : Singleton<GameManager>
     public void GoToNextQuestion()
     {
         currentQuestion++;
-        if (questionAnswered)
+        if (currentQuestion >= question.Length)
         {
-            SetUpNewQuestion();
+            QuizEnd();
         }
         else
         {
-            UpdateScore(false);
-            SetUpNewQuestion();
+            if (questionAnswered)
+            {
+                SetUpNewQuestion();
+            }
+            else
+            {
+                UpdateScore(false);
+                SetUpNewQuestion();
+            }
+            RefreshQuestionNumber();
         }
-        RefreshQuestionNumber();
+        
     }
-    
+
+    private void QuizEnd()
+    {
+        endScoreText.text = Mathf.Round(((float)correctAnswers/(currentQuestion)) * 100).ToString() + "%";
+        endView.SetActive(true);
+        gameView.SetActive(false);
+    }
+
     public void ShowCorrectAnswer()
     {
         answerButtons[question[currentQuestion].GetCorrectAnswerIndex()].ShowCorrectAnswer();
@@ -107,5 +124,15 @@ public class GameManager : Singleton<GameManager>
         }
         RefreshCorrectAnswersPercentage();
 
+    }
+
+    public void Repeat()
+    {
+        SceneManager.LoadScene("Game");
+    }
+
+    public void Home()
+    {
+        
     }
 }
